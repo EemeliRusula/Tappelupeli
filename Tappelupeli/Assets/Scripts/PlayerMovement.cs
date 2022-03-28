@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	float speed = 5.0f;
+	float jumpForce = 2.0f;
 	float horizontalMovement = 0.0f;
 	// muuttuja pelihahmon rigidbodylle
 	public Rigidbody2D MyRigidbody;
@@ -19,9 +20,17 @@ public class PlayerMovement : MonoBehaviour
     {
 		// otetaan tieto liikkumisnäppäinten painamisesta
         horizontalMovement = Input.GetAxis("Horizontal");
-		// Debug.Log(horizontalMovement);
+		// Debug.Log(horizontalMovement)
+		// jos painetaan hyppynappia, niin hypätään
+		if (Input.GetButtonDown("Jump")) 
+		{
+			// tehdään vektori hyppäykseen
+			Vector2 jumpVector = new Vector2(0, jumpForce);
+			// lisätään hyppyvektori rigidbodyyn impulssina
+			MyRigidbody.AddForce(jumpVector, ForceMode2D.Impulse);
+		}
     }
-	void FixedUpdate() 
+	void FixedUpdate()
 	{
 		// haetaan näppäimistöltä tiedot miten liike sivusuunnassa pitää mennä
 		float xVelocity = speed * horizontalMovement;

@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	float speed = 5.0f;
-	float jumpForce = 2.0f;
+	float jumpForce = 6.0f;
 	float horizontalMovement = 0.0f;
 	// muuttuja pelihahmon rigidbodylle
 	public Rigidbody2D MyRigidbody;
+	public CircleCollider2D Feet;
+	public LayerMask Ground;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = Input.GetAxis("Horizontal");
 		// Debug.Log(horizontalMovement)
 		// jos painetaan hyppynappia, niin hypätään
-		if (Input.GetButtonDown("Jump")) 
+		if (Input.GetButtonDown("Jump") && Feet.IsTouchingLayers(Ground))
 		{
 			// tehdään vektori hyppäykseen
 			Vector2 jumpVector = new Vector2(0, jumpForce);

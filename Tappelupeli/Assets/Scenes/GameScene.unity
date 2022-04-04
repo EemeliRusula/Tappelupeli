@@ -285,6 +285,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyRigidbody: {fileID: 119983821}
+  Feet: {fileID: 119983824}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +386,7 @@ GameObject:
   - component: {fileID: 614864086}
   - component: {fileID: 614864085}
   - component: {fileID: 614864084}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

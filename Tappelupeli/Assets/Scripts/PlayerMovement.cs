@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 	public Rigidbody2D MyRigidbody;
 	public CircleCollider2D Feet;
 	public LayerMask Ground;
+	public Animator myAnimator;
     // Start is called before the first frame update
     void Start()
     {

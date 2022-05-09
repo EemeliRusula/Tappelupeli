@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 			Vector2 jumpVector = new Vector2(0, jumpForce);
 			// lisätään hyppyvektori rigidbodyyn impulssina
 			MyRigidbody.AddForce(jumpVector, ForceMode2D.Impulse);
+			// kerrotaan animaattorille, että on hypätty
+			myAnimator.SetTrigger("Jump");
 		}
 		// tarkastetaan koskeeko maahan ja kerrotaan se animaattorille
 		if (Feet.IsTouchingLayers(Ground))

@@ -9,6 +9,8 @@ public class FightingScript : MonoBehaviour
 	// ajastin hyökkäyksen kestolle
 	float coolDown = 0.25f;
 	float coolDownTimer = 0.0f;
+	// animaattori
+	public Animator myAnimator;
 	// Start is called before the first frame update
     void Start()
     {
@@ -18,15 +20,25 @@ public class FightingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!attacking)
+		// lyöminen
+        if (!attacking && Input.GetButtonDown("Fire1"))
 		{
 			attacking = true;
 			coolDownTimer = coolDown;
 			Punch();
 		}
+		// iskun ajastimen pienentäminen
+		if (coolDownTimer > 0)
+		{
+			coolDownTimer -= Time.deltaTime;
+		}
+		else
+		{
+			attacking = false;
+		}
     }
 	void Punch()
 	{
-		
+		myAnimator.SetTrigger("Punch1");
 	}
 }
